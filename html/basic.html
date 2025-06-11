@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Scrollama Demo</title>
+  <style>
+    .step {
+      margin: 0 auto 800px;
+      padding: 100px;
+      background: #eee;
+      border-radius: 8px;
+      width: 60%;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scrolly">
+    <div class="step">步骤 1：你好 Scrollama</div>
+    <div class="step">步骤 2：滚动到这里会有事件</div>
+    <div class="step">步骤 3：继续滚动</div>
+  </div>
+
+  <script src="https://unpkg.com/scrollama"></script>
+  <script>
+    const scroller = scrollama();
+
+    scroller
+      .setup({
+        step: ".step",
+        offset: 0.5,
+      })
+      .onStepEnter(response => {
+        response.element.style.background = "#b3e5fc"; // 进入时改变背景色
+        console.log(`进入第 ${response.index + 1} 步`);
+      })
+      .onStepExit(response => {
+        response.element.style.background = "#eee"; // 离开恢复背景色
+        console.log(`离开第 ${response.index + 1} 步`);
+      });
+  </script>
+</body>
+</html>

@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   scroller
     .setup({
-      step: "#intro-sec .step",
+      step: "#intro-sec .steps .step",
       offset: 0.5,
       debug: false
     })
     .onStepEnter(response => {
       // 移除所有步骤的激活状态
-      document.querySelectorAll("#intro-sec .step").forEach(el => {
+      document.querySelectorAll("#intro-sec .steps .step").forEach(el => {
         el.classList.remove("active");
       });
       

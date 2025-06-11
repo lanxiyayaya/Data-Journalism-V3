@@ -158,7 +158,8 @@ function initWordCloud() {
                 formatter: function(params) {
                     return '关键词：' + params.name +'<br>' +' 权重：' + params.value;
                 }
-            },            series: [{
+            },            
+            series: [{
                 type: 'wordCloud',
                 sizeRange: [12, 80], // 调整字体大小范围以匹配新的权重范围
                 rotationRange: [-80,80],
@@ -216,7 +217,7 @@ function initWordCloud() {
     };
     
     // 设置图片路径
-    maskImage.src = './pic/蝴蝶2.png';
+    maskImage.src = '../pic/蝴蝶2.png';
 }
 
 // 默认词云配置（图片加载失败时使用）

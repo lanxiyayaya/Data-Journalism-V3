@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrollama Sticky Overlay 示例</title>
+  <style>
+    body { margin: 0; background: #f5f5f5; }
+    #scrolly { position: relative; width: 100vw; }
+    .sticky-graphic {
+      position: sticky;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .sticky-graphic img {
+      max-width: 60vw;
+      max-height: 60vh;
+      box-shadow: 0 2px 12px #0002;
+    }
+    .steps {
+      margin-top: -100vh;
+      position: relative;
+      z-index: 0;
+    }
+    .step {
+      min-height: 80vh;
+      margin: 0 auto 110vh auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      padding: 2em;
+      width: 60vw;
+      box-shadow: 0 2px 8px #0002;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="scrolly">
+    <div class="sticky-graphic">
+      <img id="my-image" src="image1.png" />
+    </div>
+    <div class="steps">
+      <div class="step">第一步：介绍图片1</div>
+      <div class="step">第二步：切换到图片2</div>
+      <div class="step">第三步：切换到图片3</div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/scrollama"></script>
+  <script>
+    const scroller = scrollama();
+    scroller
+      .setup({
+        step: ".step",
+        offset: 0.5,
+      })
+      .onStepEnter(response => {
+        const img = document.getElementById("my-image");
+        img.src = `image${response.index + 1}.png`;
+      });
+  </script>
+</body>
+</html>
