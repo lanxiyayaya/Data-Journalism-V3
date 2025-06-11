@@ -1,0 +1,36 @@
+body{
+    background-color: #f9f7f7;
+}
+
+h1{
+    text-align: center;
+    font-family: "STFangsong";
+}
+
+#authors{
+    text-align: center;
+    font-family: "STFangsong";
+}
+
+h2{
+    text-align: center;
+    font-family: "STFangsong";
+}
+
+h3{
+    font-family: "STFangsong";
+}
+
+.title-span{
+    font-family: "STFangsong";
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+}
+
+#admitted-num{
+    height: 500px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}

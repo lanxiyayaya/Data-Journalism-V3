@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scrollama Basic 样式 Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+    #scrolly {
+      position: relative;
+    }
+    article {
+      position: relative;
+      padding: 0 1rem;
+      margin: 0 auto;
+      width: 33%;
+      min-width: 320px;
+      max-width: 600px;
+    }    .step {
+      margin: 2rem auto 4rem auto;
+      background-color: #3b3b3b;
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      opacity: 0.3;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+    }
+    .step.is-active {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 8px 32px rgba(59,59,59,0.2);
+    }
+    .step p {
+      text-align: center;
+      padding: 2rem 1rem 2rem 1rem;
+      font-size: 1.5rem;
+      margin: 0;
+    }    .step .desc {
+      font-size: 1rem;
+      color: #eee;
+      margin: 0 0 1rem 0;
+      text-align: center;
+    }
+    .step.is-active .desc {
+      color: #eee;
+    }
+    #intro, #outro {
+      max-width: 40rem;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    #outro {
+      margin-top: 6rem;
+      color: #888;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 700px) {
+      article { width: 97%; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="intro">
+      <h1 class="intro__hed">Scrollama Basic 样式 Demo</h1>
+      <p class="intro__dek">
+        向下滚动，体验滚动驱动的内容激活效果。每个 Step 都可以显示不同的内容。
+      </p>
+    </section>
+    <section id="scrolly">
+      <article>
+        <div class="step" data-step="1">
+          <p>STEP 1</p>
+          <div class="desc">欢迎来到第一个步骤。这里可以放你的介绍文本。</div>
+        </div>
+        <div class="step" data-step="2">
+          <p>STEP 2</p>
+          <div class="desc">每当你滚动到一个新的 Step 时，它会高亮显示。</div>
+        </div>
+        <div class="step" data-step="3">
+          <p>STEP 3</p>
+          <div class="desc">你可以在这里展示产品特性、讲故事、嵌入图表等。</div>
+        </div>
+        <div class="step" data-step="4">
+          <p>STEP 4</p>
+          <div class="desc">支持任意数量的 Step，可自定义内容和样式。</div>
+        </div>
+        <div class="step" data-step="5">
+          <p>STEP 5</p>
+          <div class="desc">滚动驱动的页面很适合数据可视化、交互式讲解等。</div>
+        </div>
+      </article>
+    </section>
+    <section id="outro">感谢体验 Scrollama Basic Demo！</section>
+  </main>
+
+  <!-- 引入 scrollama.js，可以用本地或 CDN，下面用 CDN -->
+  <script src="https://unpkg.com/scrollama"></script>
+  <script>
+    var scrolly = document.querySelector("#scrolly");
+    var article = scrolly.querySelector("article");
+    var step = article.querySelectorAll(".step");
+
+    // 实例化 scrollama
+    var scroller = scrollama();
+
+    // 进入 step 时
+    function handleStepEnter(response) {
+      response.element.classList.add("is-active");
+    }
+    // 离开 step 时
+    function handleStepExit(response) {
+      response.element.classList.remove("is-active");
+    }
+
+    function init() {
+      // 随机设置 padding 拉开 Step 间距
+      step.forEach(function (step) {
+        var v = 100 + Math.floor((Math.random() * window.innerHeight) / 4);
+        step.style.padding = v + "px 0px";
+      });
+
+      // 设置 scroller
+      scroller
+        .setup({
+          step: "#scrolly article .step",
+          offset: 0.55,
+          debug: false
+        })
+        .onStepEnter(handleStepEnter)
+        .onStepExit(handleStepExit);
+    }
+
+    window.addEventListener("load", init);
+    window.addEventListener("resize", scroller.resize);
+  </script>
+</body>
+</html>

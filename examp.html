@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>您的数据新闻标题</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Scrollama -->
+    <script src="https://unpkg.com/intersection-observer@0.12.0/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    
+    <!-- D3.js for data visualization (if needed) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        /* 自定义样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* 封面页样式 */
+        .cover-section {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        /* 滚动容器 */
+        .scroll-container {
+            position: relative;
+        }
+        
+        /* 固定的可视化区域 */
+        .sticky-visualization {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+        
+        /* 滚动文本区域 */
+        .scroll-text {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* 步骤样式 */
+        .step {
+            margin: 0 auto 80vh auto;
+            padding: 2rem;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .step:last-child {
+            margin-bottom: 40vh;
+        }
+        
+        /* 激活状态的步骤 */
+        .step.is-active {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        /* 可视化容器 */
+        .visualization-container {
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* 数据占位符 */
+        .chart-placeholder {
+            width: 600px;
+            height: 400px;
+            background: #e9ecef;
+            border: 2px dashed #adb5bd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .scroll-container {
+                flex-direction: column;
+            }
+            
+            .sticky-visualization {
+                position: relative;
+                height: 50vh;
+            }
+            
+            .step {
+                margin: 2rem auto;
+                max-width: 90%;
+            }
+        }
+        
+        /* 进度指示器 */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* 结束页 */
+        .conclusion-section {
+            min-height: 100vh;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 进度指示器 -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- 封面页 -->
+    <section class="cover-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h1 class="display-3 mb-4">您的数据故事标题</h1>
+                    <p class="lead mb-4">一个引人入胜的副标题，简要描述您的数据新闻内容</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <span class="me-3">作者：您的名字</span>
+                        <span>发布日期：2025年1月</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 介绍部分 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <p class="lead">
+                        在这里写一段引言，介绍您的数据新闻背景和重要性。这段文字将为读者提供必要的上下文信息。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要滚动叙事部分 -->
+    <section class="scroll-container">
+        <div class="row g-0">
+            <!-- 固定的可视化区域 -->
+            <div class="col-lg-7">
+                <div class="sticky-visualization">
+                    <div class="visualization-container">
+                        <!-- 这里放置您的数据可视化 -->
+                        <div class="chart-placeholder" id="mainVisualization">
+                            <div>
+                                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                                <div>您的数据可视化将在这里显示</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 滚动文本区域 -->
+            <div class="col-lg-5">
+                <div class="scroll-text">
+                    <!-- 步骤 1 -->
+                    <div class="step" data-step="1">
+                        <h3><i class="fas fa-play-circle text-primary me-2"></i>开始我们的数据之旅</h3>
+                        <p>这是第一个步骤的描述。在这里解释您的数据故事的第一个要点。</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>重要信息：</strong>在这里添加关键的数据洞察
+                        </div>
+                    </div>
+
+                    <!-- 步骤 2 -->
+                    <div class="step" data-step="2">
+                        <h3><i class="fas fa-search text-success me-2"></i>深入数据分析</h3>
+                        <p>第二个步骤的内容。展示数据的另一个维度或时间段。</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>数据要点 1</li>
+                            <li><i class="fas fa-check text-success me-2"></i>数据要点 2</li>
+                            <li><i class="fas fa-check text-success me-2"></i>数据要点 3</li>
+                        </ul>
+                    </div>
+
+                    <!-- 步骤 3 -->
+                    <div class="step" data-step="3">
+                        <h3><i class="fas fa-chart-bar text-warning me-2"></i>关键发现</h3>
+                        <p>第三个步骤揭示了重要的数据发现。这里可以包含统计数据或趋势分析。</p>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h4 class="text-primary">85%</h4>
+                                <small>关键指标 1</small>
+                            </div>
+                            <div class="col-6">
+                                <h4 class="text-danger">15%</h4>
+                                <small>关键指标 2</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 步骤 4 -->
+                    <div class="step" data-step="4">
+                        <h3><i class="fas fa-lightbulb text-warning me-2"></i>数据洞察</h3>
+                        <p>在这一步中，我们来看看数据背后的含义和影响。</p>
+                        <blockquote class="blockquote">
+                            <p class="mb-0">"这里可以放置一个重要的引用或数据发现。"</p>
+                            <footer class="blockquote-footer mt-2">数据来源</footer>
+                        </blockquote>
+                    </div>
+
+                    <!-- 步骤 5 -->
+                    <div class="step" data-step="5">
+                        <h3><i class="fas fa-flag-checkered text-danger me-2"></i>结论与展望</h3>
+                        <p>最后一个步骤总结我们的发现并提供未来展望。</p>
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h6 class="card-title">关键结论</h6>
+                                <p class="card-text small">基于数据分析，我们可以得出以下结论...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 结论部分 -->
+    <section class="conclusion-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h2 class="mb-4">数据告诉我们什么？</h2>
+                    <p class="lead mb-4">在这里总结您的主要发现和结论。</p>
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-share fa-2x mb-3"></i>
+                            <h5>分享这个故事</h5>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-download fa-2x mb-3"></i>
+                            <h5>下载数据</h5>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-comment fa-2x mb-3"></i>
+                            <h5>留下评论</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Scrollama 设置
+        var scroller = scrollama();
+
+        // 初始化 scrollama
+        scroller
+            .setup({
+                step: '.step',
+                offset: 0.5,
+                debug: false
+            })
+            .onStepEnter(handleStepEnter)
+            .onStepExit(handleStepExit);
+
+        // 处理步骤进入事件
+        function handleStepEnter(response) {
+            var step = response.element.getAttribute('data-step');
+            
+            // 添加激活状态
+            response.element.classList.add('is-active');
+            
+            // 根据步骤更新可视化
+            updateVisualization(step);
+            
+            // 更新进度条
+            updateProgress(response.index, document.querySelectorAll('.step').length);
+        }
+
+        // 处理步骤退出事件
+        function handleStepExit(response) {
+            response.element.classList.remove('is-active');
+        }
+
+        // 更新可视化函数
+        function updateVisualization(step) {
+            var viz = document.getElementById('mainVisualization');
+            
+            // 根据步骤切换可视化内容
+            switch(step) {
+                case '1':
+                    viz.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-chart-pie fa-5x text-primary mb-3"></i>
+                            <h4>步骤 1: 数据概览</h4>
+                            <p>在这里放置您的第一个图表</p>
+                        </div>
+                    `;
+                    break;
+                case '2':
+                    viz.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-chart-line fa-5x text-success mb-3"></i>
+                            <h4>步骤 2: 趋势分析</h4>
+                            <p>在这里放置您的第二个图表</p>
+                        </div>
+                    `;
+                    break;
+                case '3':
+                    viz.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar fa-5x text-warning mb-3"></i>
+                            <h4>步骤 3: 对比分析</h4>
+                            <p>在这里放置您的第三个图表</p>
+                        </div>
+                    `;
+                    break;
+                case '4':
+                    viz.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-map fa-5x text-info mb-3"></i>
+                            <h4>步骤 4: 地理分布</h4>
+                            <p>在这里放置您的第四个图表</p>
+                        </div>
+                    `;
+                    break;
+                case '5':
+                    viz.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-trophy fa-5x text-danger mb-3"></i>
+                            <h4>步骤 5: 最终结论</h4>
+                            <p>在这里放置您的总结图表</p>
+                        </div>
+                    `;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // 更新进度条
+        function updateProgress(currentStep, totalSteps) {
+            var progress = ((currentStep + 1) / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // 窗口大小调整时重新初始化 scrollama
+        window.addEventListener('resize', scroller.resize);
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 这里可以加载您的实际数据可视化
+            console.log('页面加载完成，可以初始化您的图表了！');
+        });
+    </script>
+</body>
+</html>
