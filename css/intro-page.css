@@ -1,0 +1,46 @@
+#intro-sec .step {
+  padding: 40px 0;
+  transition: background 0.3s;
+}
+#intro-sec .step.active {
+  background: #f0f8ff;
+}
+
+.scrolly {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  min-height: 80vh;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.sticky-overlay {
+  position: sticky;
+  top: 80px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.step {
+  opacity: 0.2;
+  transform: translateY(40px);
+  transition: opacity 0.4s, transform 0.4s;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 0 0 20px 0;
+  padding: 24px 20px;
+  box-shadow: 0 2px 8px rgba(40,40,40,0.03);
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(80,80,80,0.06);
+  border-color: #90caf9;
+}
