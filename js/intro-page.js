@@ -1,23 +1,32 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const scroller = scrollama();
+var scrolly = d3.select("#scrolly");
+    var article = scrolly.select("article");
+    var step = article.selectAll(".step");
+    var scroller = scrollama();
 
-  scroller
-    .setup({
-      step: "#intro-sec .steps .step",
-      offset: 0.5,
-      debug: false
-    })
-    .onStepEnter(response => {
-      // 移除所有步骤的激活状态
-      document.querySelectorAll("#intro-sec .steps .step").forEach(el => {
-        el.classList.remove("active");
-      });
+    function handleResize() {
+      var stepH = Math.floor(window.innerHeight * 0.75);
+      step.style("height", stepH + "px");
+      scroller.resize();
+    }    function handleStepEnter(response) {
+      // 移除所有激活状态
+      step.classed("is-active", false);
       
-      // 为当前步骤添加激活状态
-      response.element.classList.add("active");
-    });
-    // 删除 .onStepExit() - 这是导致闪动的主要原因
+      // 激活当前步骤
+      step.classed("is-active", function (d, i) {
+        return i === response.index;
+      });
+    }
 
-  // 适应窗口大小变化
-  window.addEventListener("resize", scroller.resize);
-});
+    function init() {
+      handleResize();
+      scroller
+        .setup({
+          step: "#scrolly article .step",
+          offset: 0.5,
+          debug: false
+        })
+        .onStepEnter(handleStepEnter);
+
+      window.addEventListener("resize", handleResize);
+    }
+    init();

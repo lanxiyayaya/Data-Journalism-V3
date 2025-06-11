@@ -7,17 +7,14 @@
 </head>
 <body>    
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/page-layout.css">
-    <link rel="stylesheet" href="../css/page-effects.css">
-    <link rel="stylesheet" href="../css/title-page1.css">
-    <link rel="stylesheet" href="../css/intro-page2.css">
+    <link rel="stylesheet" href="../css/intro-page.css">
 
     <script src="../js/echarts.js"></script>
-    <script src="../js/page-layout.js"></script>
     <script src="../js/title-page.js"></script>
     <script src="https://unpkg.com/@antv/g2/dist/g2.min.js"></script>
     <script src="../js/echarts-wordcloud.min.js"></script>    
     <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
 </body>    
     <!-- 标题页 -->
     <section id="title-sec">
@@ -25,28 +22,30 @@
     </section>
 
     <!-- 引入页 -->
-    <section id="intro-sec" class="scrolly">
-        <div class="sticky-overlay"></div>
-        <div class="steps">
+    <section id="scrolly">
+        <figure>
+            <img src="蝴蝶.png" alt="蝴蝶" />
+        </figure>
+        <article>
             <div class="step">
                 <h2>“奇点是不存在的。”</h2>
             </div>
             <div class="step">
                 <p>
-                    正在上海某高校就读环境专业博士的月影在和朋友的聊天框中打出这句话，这句话也像是她对自己博士生涯的注脚。彼时本应在一年前如期毕业的月影已经迎来了博士生涯第五年的尾声，她正处于将毕业论文送审的焦虑期。
+                  正在上海某高校就读环境专业博士的月影在和朋友的聊天框中打出这句话，这句话也像是她对自己博士生涯的注脚。彼时本应在一年前如期毕业的月影已经迎来了博士生涯第五年的尾声，她正处于将毕业论文送审的焦虑期。
                 </p>
             </div>
             <div class="step">
                 <p>
-                    打完这句话后月影进一步解释道：“可以说我们现在所有科学都是基于奇点是存在的，我们认为奇点存在，所以我们才会继续去发展。可是如果最后我连奇点不存在的观点都可以接受了，我还有什么不可以接受的呢？”
+                  打完这句话后月影进一步解释道：“可以说我们现在所有科学都是基于奇点是存在的，我们认为奇点存在，所以我们才会继续去发展。可是如果最后我连奇点不存在的观点都可以接受了，我还有什么不可以接受的呢？”
                 </p>
             </div>
             <div class="step">
                 <p>
-                    而在此之前，月影形容自己长期陷入虚无主义的怪圈，<span>圈住她的是不断延期的毕业时间。</span>
+                  而在此之前，月影形容自己长期陷入虚无主义的怪圈，<span>圈住她的是不断延期的毕业时间。</span>
                 </p>
             </div>
-        </div>
+        </article>
     </section>
 
     <!-- 博士生数量 -->
@@ -339,6 +338,6 @@
     <script src="../js/comments-on-bonus.js"></script>
     <script src="../js/marriage-and-gender.js"></script>
     <script src="../js/wordcloud.js"></script>
-    <script src="../js/intro-page.js"></script>
+
 </body>
 </html>

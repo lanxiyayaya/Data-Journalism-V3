@@ -12,13 +12,11 @@
     }
     #scrolly {
       position: relative;
-      background-color: #f3f3f3;
       padding: 1rem;
       max-width: 80%;
       margin: 40px auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }    figure {
+    }    
+    figure {
       position: sticky;
       top: 0;                    /* 改为贴顶，实现真正的屏幕中央 */
       width: 100%;
@@ -27,9 +25,9 @@
       /* background-color: #8a8a8a; */
       z-index: 0;
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      /* align-items: center;
+      justify-content: center; */
+    }    
     figure img {
       display: block;
       width: auto;
@@ -38,18 +36,19 @@
       object-fit: contain;
       margin: 0 auto;
       pointer-events: none;
-      opacity: 0.93;
+      opacity: 0.9;                /* 隐藏图片，但保持布局 */
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18));
       transition: transform 0.3s;
-    }    
+    }
     article {
       position: relative;
       padding: 0;
       max-width: 35rem;          /* 增加宽度以适应横向矩形 */
       margin: 0 auto;
       padding-top: 100vh;        /* 添加顶部间距，让第一个步骤需要下滑才显示 */
-    }    .step {
-      margin: 0 auto 8rem auto;  /* 大幅增加步骤间距 */
+    }    
+    .step {
+      margin: 0 auto 10rem auto;  /* 大幅增加步骤间距 */
       color: #333;
       background-color: rgba(0, 0, 0, 0.06);
       border-radius: 8px;        /* 稍微增加圆角 */
@@ -62,7 +61,7 @@
       justify-content: center;   /* 水平居中 */
     }
     .step:last-child {
-      margin-bottom: 0;
+      margin-bottom: 100rem; /* 保持最后一个步骤的底部间距 */
     }
     .step.is-active p, .step.is-active h2 {
       background-color: #ffe5b1;
