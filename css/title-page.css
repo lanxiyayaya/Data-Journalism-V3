@@ -1,12 +1,9 @@
 /* 标题页面专用样式 */
 #title-sec {
-    height: 100vh;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: white; */
     position: relative;
     overflow: hidden;
 }
