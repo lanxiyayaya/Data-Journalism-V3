@@ -1,7 +1,24 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #f9f7f7;
+    background-color: #ffffff; /* 纯白背景更现代 */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 隐藏滚动条保持整洁外观 */
+html, body {
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 /* 标题页全屏样式 - 现代简约风格 */
@@ -31,60 +48,307 @@ body{
     text-align: center;
 }
 
+/* 现代排版样式 */
 h1{
     text-align: center;
-    font-family: "STFangsong";
-}
-
-#authors{
-    text-align: center;
-    font-family: "STFangsong";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
 }
 
 h2{
     text-align: center;
-    font-family: "STFangsong";
-}
-
-#fullpage .section #uncertainty {
-    height: 100vh !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 3rem 0 2rem 0;
+    letter-spacing: -0.01em;
 }
 
 h3{
-    font-family: "STFangsong";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin: 2rem 0 1rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid #007AFF;
 }
 
+/* 现代段落样式 */
 p{
-    font-size: 1.1rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+    color: #444;
+    max-width: 65ch; /* 最佳阅读宽度 */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
 }
+
+/* 副标题样式 */
 .title-span{
-    font-family: "STFangsong";
-    font-size: 1.1em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #666;
     text-align: center;
     display: block;
+    margin: -1rem auto 3rem auto;
+    max-width: 600px;
+    line-height: 1.5;
 }
 
+/* 作者信息样式 */
+#authors{
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    color: #888;
+    margin: 2rem 0 0.5rem 0;
+}
+
+/* 数据可视化容器现代化 */
 #admitted-num{
     height: 500px;
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    position: relative;
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* 图表容器通用样式 */
+[id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+    width: 100% !important;
+    max-width: 800px !important;
+    height: 500px !important;
+    margin: 2.5rem auto !important;
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+}
+
+/* 特殊页面样式 */
+#fullpage .section #uncertainty {
+    height: 100vh !important;
+    overflow-y: auto;
+}
+
+/* 高亮文本样式 */
+p span {
+    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* 现代引用和文献样式 */
+.literature {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0.8rem 0;
+    padding: 0 1rem;
+    text-align: left;
+    border-left: 2px solid #e0e0e0;
+    background: #fafafa;
+    border-radius: 0 4px 4px 0;
+    padding: 0.8rem 1rem;
+}
+
+#literature-title {
+    font-weight: 600;
+    color: #333;
+    margin-top: 3rem;
+    font-size: 1.1rem;
+}
+
+/* 图片容器现代化 */
+#delay-little {
+    max-width: 600px !important;
+    margin: 2rem auto !important;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+#delay-little img {
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+#delay-little img:hover {
+    transform: scale(1.02);
+}
+
+/* 全屏引入页优化 */
+#scrolly {
+    margin: 0 -5% !important;
+    width: calc(100% + 10%) !important;
+}
+
+#scrolly figure {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+#scrolly figure img {
+    width: 100% !important;
+    height: 100vh !important;
+    object-fit: cover;
+}
+
+/* 平滑过渡效果 */
+* {
+    transition: all 0.2s ease;
+}
+
+/* 现代卡片样式 */
+.section {
     position: relative;
 }
 
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #007AFF, transparent);
+    opacity: 0.6;
+}
+
 /* 响应式设计 - 移动端适配 */
+@media (max-width: 1200px) {
+    #fullpage {
+        padding: 0 4%;
+    }
+    
+    .section section {
+        padding: 0 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+    
+    [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+        margin: 2rem auto !important;
+        padding: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
+    #fullpage {
+        padding: 0 3%;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .section section {
+        padding: 0 1rem;
+    }
+    
     #title-sec h1 {
-        font-size: 2.2rem;     /* 移动端稍小的字体 */
+        font-size: 2.2rem;
         padding: 1.5rem;
         max-width: 90%;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        margin: 2rem 0 1.5rem 0;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem 0;
+        padding-left: 0.8rem;
+        border-left-width: 2px;
+    }
+    
+    p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        max-width: none;
+        margin: 0 0 1.2rem 0;
+    }
+    
+    .title-span {
+        font-size: 1.1rem;
+        margin: -0.5rem auto 2rem auto;
+    }
+    
+    [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+        height: 400px !important;
+        margin: 1.5rem auto !important;
+        padding: 1rem;
+        border-radius: 8px;
     }
 }
 
 @media (max-width: 480px) {
+    #fullpage {
+        padding: 0 2%;
+    }
+    
+    .section {
+        padding: 1.5rem 0;
+    }
+    
+    .section section {
+        padding: 0 0.8rem;
+    }
+    
     #title-sec h1 {
-        font-size: 1.8rem;     /* 小屏幕更小的字体 */
+        font-size: 1.8rem;
         padding: 1rem;
         max-width: 95%;
         line-height: 1.4;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin: 1.5rem 0 1rem 0;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.8rem 0;
+        padding-left: 0.6rem;
+    }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
+    }
+    
+    .title-span {
+        font-size: 1rem;
+        margin: 0 auto 1.5rem auto;
+    }
+    
+    [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+        height: 320px !important;
+        margin: 1rem auto !important;
+        padding: 0.8rem;
+        border-radius: 6px;
+    }
+    
+    #admitted-num {
+        height: 300px !important;
     }
 }
