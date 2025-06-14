@@ -123,8 +123,25 @@ p{
     box-shadow: none;
 }
 
+
 /* 图表容器通用样式 - 统一所有数据图 */
-[id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+/* 使用:not()选择器排除页面级section */
+[id$="-num"]:not(#phd-num), [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"]:not(#marriage), [id*="wordcloud"] {
+    width: 100% !important;
+    max-width: 900px !important;
+    height: 500px !important;
+    margin: 3rem auto !important;
+    padding: 2rem 1rem !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative !important;
+    display: block !important;
+}
+
+/* 特定图表容器样式补充 */
+#marriage-and-gender {
     width: 100% !important;
     max-width: 900px !important;
     height: 500px !important;
