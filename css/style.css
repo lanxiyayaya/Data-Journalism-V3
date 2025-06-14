@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #ffffff; /* 纯白背景更现代 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: serif; /* 使用系统默认字体 */
     line-height: 1.6;
     color: #333;
 }
@@ -51,14 +51,14 @@ html, body {
 /* 现代排版样式 */
 h1{
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: serif; /* 使用系统默认字体 */
     font-weight: 300;
     letter-spacing: -0.02em;
 }
 
 h2{
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "宋体", SimSun, serif;
     font-size: 2.5rem;
     font-weight: 600;
     color: #1a1a1a;
@@ -67,7 +67,7 @@ h2{
 }
 
 h3{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: serif; /* 使用系统默认字体 */
     font-size: 1.5rem;
     font-weight: 500;
     color: #333;
@@ -90,8 +90,8 @@ p{
 
 /* 副标题样式 */
 .title-span{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 1.25rem;
+    font-family: "宋体", SimSun, serif;
+    font-size: 1.1rem;
     font-weight: 400;
     color: #666;
     text-align: center;
@@ -104,7 +104,7 @@ p{
 /* 作者信息样式 */
 #authors{
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: serif; /* 使用系统默认字体 */
     font-size: 1rem;
     color: #888;
     margin: 2rem 0 0.5rem 0;
@@ -266,8 +266,8 @@ p span {
     .section section {
         padding: 0 1.5rem;
     }
-    
-    h2 {
+      h2 {
+        font-family: "宋体", SimSun, serif;
         font-size: 2.2rem;
     }
     
@@ -295,8 +295,8 @@ p span {
         padding: 1.5rem;
         max-width: 90%;
     }
-    
-    h2 {
+      h2 {
+        font-family: "宋体", SimSun, serif;
         font-size: 2rem;
         margin: 2rem 0 1.5rem 0;
     }
@@ -313,11 +313,11 @@ p span {
         max-width: none;
         margin: 0 0 1.2rem 0;
     }
-    
-    .title-span {
-        font-size: 1.1rem;
+      .title-span {
+        font-family: "宋体", SimSun, serif;
+        font-size: 1rem;
         margin: -0.5rem auto 2rem auto;
-    }    /* 统一的响应式数据图样式 - 平板端 */
+    }/* 统一的响应式数据图样式 - 平板端 */
     [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
         width: 95% !important;
         max-width: 100% !important;
@@ -354,8 +354,8 @@ p span {
         max-width: 95%;
         line-height: 1.4;
     }
-    
-    h2 {
+      h2 {
+        font-family: "宋体", SimSun, serif;
         font-size: 1.8rem;
         margin: 1.5rem 0 1rem 0;
     }
@@ -371,11 +371,11 @@ p span {
         line-height: 1.5;
         margin: 0 0 1rem 0;
     }
-    
-    .title-span {
-        font-size: 1rem;
+      .title-span {
+        font-family: "宋体", SimSun, serif;
+        font-size: 0.95rem;
         margin: 0 auto 1.5rem auto;
-    }    /* 统一的响应式数据图样式 - 手机端 */
+    }/* 统一的响应式数据图样式 - 手机端 */
     [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
         width: 98% !important;
         max-width: 100% !important;
