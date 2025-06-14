@@ -39,10 +39,10 @@
       max-width: 50rem;          /* 增加宽度，让方框更宽 */
       margin: 0 auto;
       padding-top: 100vh;        /* 添加顶部间距，让第一个步骤需要下滑才显示 */
-    }        .step {
+    }          .step {
       margin: 0 auto 50rem auto;  /* 大幅增加步骤间距 */
       color: #333;
-      background-color: rgba(255, 255, 255, 0.85); /* 增强背景透明度，白色背景 */
+      background-color: rgba(255, 255, 255, 0.75); /* 提高透明度，降低不透明度 */
       border-radius: 12px;       /* 增加圆角 */
       transition: background 0.4s ease, color 0.4s ease;
       max-height: 250px;         /* 减小最小高度 */
@@ -52,8 +52,9 @@
       justify-content: flex-start; /* 改为左对齐 */
       padding: 1rem 2rem;        /* 减小内边距 */
       backdrop-filter: blur(5px); /* 添加背景模糊效果 */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 添加阴影 */
-    }    .step:last-child {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* 减少阴影不透明度 */
+    }
+    .step:last-child {
       margin-bottom: 0;
     }
     
@@ -73,12 +74,11 @@
       transform: none;           /* 不应用变换效果 */
       box-shadow: none;          /* 不显示阴影 */
     }
-    
       /* 激活时整个step容器的背景变暗 */
     .step.is-active {
-      background-color: rgba(255, 255, 255, 0.95); /* 激活时更不透明 */
+      background-color: rgba(255, 255, 255, 0.85); /* 激活时稍微降低透明度 */
       transform: scale(1.02);    /* 轻微放大效果 */
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* 增强阴影 */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* 适度减少阴影不透明度 */
     }
     
     .step.is-active p, .step.is-active h2 {
