@@ -425,3 +425,18 @@ p span {
 @keyframes fadeInChar {
     to { opacity: 1; }
 }
+
+/* 词云图特定样式 - 减少下方距离 */
+#wordcloud {
+    width: 100% !important;
+    max-width: 900px !important;
+    height: 500px !important;
+    margin: 3rem auto 1.5rem auto !important; /* 减少下边距从3rem到1.5rem */
+    padding: 2rem 1rem !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative !important;
+    display: block !important;
+}
