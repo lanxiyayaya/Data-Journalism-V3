@@ -1,4 +1,7 @@
-var myChart = echarts.init(document.getElementById('comments-on-tutor'));
+var myChart = echarts.init(document.getElementById('comments-on-tutor'), null, {
+  width: 'auto',
+  height: 500
+});
 
 // 数据处理 - 将四个维度的数据转换为气泡图格式
 var dimensions = [
@@ -17,6 +20,7 @@ var delayedBubbleData = delayedData.map((value, index) => [index, value, value *
 var graduatedBubbleData = graduatedData.map((value, index) => [index, value, value * 80]);
 
 var option = {
+    backgroundColor: 'transparent',
     title: {
         text: '延毕博士生和应届博士毕业生对导师的评价',
         subtext: '数据来源：北京大学中国博士教育研究中心',

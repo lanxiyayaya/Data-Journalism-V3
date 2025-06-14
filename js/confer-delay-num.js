@@ -1,5 +1,8 @@
 var chartDom = document.getElementById('confer-delay-num');
-var myChart = echarts.init(chartDom);
+var myChart = echarts.init(chartDom, null, {
+    width: 'auto',
+    height: 500
+});
 var option;
 
 option = {

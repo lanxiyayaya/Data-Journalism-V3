@@ -1,5 +1,10 @@
-var myChart = echarts.init(document.getElementById('reform'));
-var option = {    title: {
+var myChart = echarts.init(document.getElementById('reform'), null, {
+  width: 'auto',
+  height: 500
+});
+var option = {
+    backgroundColor: 'transparent',
+    title: {
         text: '博士生认为亟待改革的问题',
         left: 'center',
         textStyle: {

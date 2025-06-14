@@ -1,5 +1,8 @@
 var chartDom = document.getElementById('delay-among-subjects');
-var myChart = echarts.init(chartDom);
+var myChart = echarts.init(chartDom, null, {
+  width: 'auto',
+  height: 500
+});
 var option;
 
 // 2022年各学科博士生延毕率数据
@@ -28,7 +31,9 @@ var delay_data = subjects.map(function(sub, idx) {
     };
 });
 
-option = {  title: {
+option = {
+  backgroundColor: 'transparent',
+  title: {
     text: '2022年各学科博士生延毕率',
     subtext: '数据来源：教育部',
     left: 'center',

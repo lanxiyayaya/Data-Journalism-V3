@@ -1,5 +1,8 @@
 var chartDom = document.getElementById('total-delay');
-var myChart = echarts.init(chartDom);
+var myChart = echarts.init(chartDom, null, {
+    width: 'auto',
+    height: 500
+});
 var option;
 
 // 2007-2022年博士生总体延毕率数据

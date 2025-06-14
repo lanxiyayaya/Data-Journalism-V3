@@ -129,15 +129,18 @@ function initWordCloud() {
         return;
     }
 
-    const myChart = echarts.init(chartDom);
+    const myChart = echarts.init(chartDom, null, {
+      width: 'auto',
+      height: 500
+    });
     
     // 创建图片对象来加载蝴蝶图片
     const maskImage = new Image();
     maskImage.crossOrigin = 'anonymous';
     
-    maskImage.onload = function() {
-        // 图片加载成功后配置词云
+    maskImage.onload = function() {        // 图片加载成功后配置词云
         const option = {
+            backgroundColor: 'transparent',
             title: {
                 text: '博士们多次提及的关键词',
                 subtext: '数据来源：深度访谈',

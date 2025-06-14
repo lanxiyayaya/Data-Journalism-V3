@@ -1,5 +1,10 @@
-var myChart = echarts.init(document.getElementById('pressure-source'));  
-var option = {    title: {
+var myChart = echarts.init(document.getElementById('pressure-source'), null, {
+  width: 'auto',
+  height: 500
+});  
+var option = {
+    backgroundColor: 'transparent',
+    title: {
         text: '博士生压力主要来源',
         subtext: '数据来源：北京大学中国博士教育研究中心',
         left: 'center',
