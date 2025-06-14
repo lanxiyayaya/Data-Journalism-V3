@@ -102,7 +102,7 @@ p{
 }
 
 /* 作者信息样式 */
-#authors{
+#authors, #teachers{
     text-align: center;
     font-family: serif; /* 使用系统默认字体 */
     font-size: 1rem;
