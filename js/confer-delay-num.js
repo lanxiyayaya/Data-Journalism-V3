@@ -3,7 +3,7 @@ var myChart = echarts.init(chartDom);
 var option;
 
 option = {
-  backgroundColor: '#f9f7f7',  title: {
+  backgroundColor: 'transparent',  title: {
     text: '2007年至2022年博士学位授予数与延毕人数',
     subtext: '数据来源：国家统计局',
     left: 'center',

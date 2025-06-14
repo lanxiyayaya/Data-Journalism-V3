@@ -72,8 +72,8 @@ h3{
     font-weight: 500;
     color: #333;
     margin: 2rem 0 1rem 0;
-    padding-left: 1rem;
-    border-left: 3px solid #007AFF;
+    padding-left: 0;
+    border-left: none;
 }
 
 /* 现代段落样式 */
@@ -110,30 +110,32 @@ p{
     margin: 2rem 0 0.5rem 0;
 }
 
-/* 数据可视化容器现代化 */
+/* 数据可视化容器统一样式 */
 #admitted-num{
-    height: 500px;
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
+    width: 100% !important;
+    max-width: 900px !important;
+    height: 600px !important;
+    margin: 3rem auto !important;
     position: relative;
-    background: #fafafa;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    background: transparent;
+    border-radius: 0;
+    padding: 2rem 1rem;
+    box-shadow: none;
 }
 
-/* 图表容器通用样式 */
+/* 图表容器通用样式 - 统一所有数据图 */
 [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
     width: 100% !important;
-    max-width: 800px !important;
-    height: 500px !important;
-    margin: 2.5rem auto !important;
-    padding: 1.5rem;
-    background: #fafafa;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #f0f0f0;
+    max-width: 900px !important;
+    height: 600px !important;
+    margin: 3rem auto !important;
+    padding: 2rem 1rem !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative !important;
+    display: block !important;
 }
 
 /* 特殊页面样式 */
@@ -144,9 +146,9 @@ p{
 
 /* 高亮文本样式 */
 p span {
-    background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-    padding: 2px 8px;
-    border-radius: 4px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
     font-weight: 500;
 }
 
@@ -158,9 +160,9 @@ p span {
     margin: 0.8rem 0;
     padding: 0 1rem;
     text-align: left;
-    border-left: 2px solid #e0e0e0;
-    background: #fafafa;
-    border-radius: 0 4px 4px 0;
+    border-left: none;
+    background: transparent;
+    border-radius: 0;
     padding: 0.8rem 1rem;
 }
 
@@ -173,15 +175,24 @@ p span {
 
 /* 图片容器现代化 */
 #delay-little {
-    max-width: 600px !important;
+    width: 100% !important;
+    max-width: 700px !important;
+    height: auto !important;
     margin: 2rem auto !important;
-    border-radius: 12px;
+    padding: 0 !important;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #delay-little img {
-    border-radius: 12px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
     transition: transform 0.3s ease;
 }
 
@@ -221,15 +232,7 @@ p span {
 }
 
 .section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #007AFF, transparent);
-    opacity: 0.6;
+    display: none;
 }
 
 /* 确保导航点不被图片遮挡 - 保留原始外观 */
@@ -280,12 +283,11 @@ p span {
         font-size: 2rem;
         margin: 2rem 0 1.5rem 0;
     }
-    
-    h3 {
+      h3 {
         font-size: 1.3rem;
         margin: 1.5rem 0 1rem 0;
-        padding-left: 0.8rem;
-        border-left-width: 2px;
+        padding-left: 0;
+        border-left: none;
     }
     
     p {
@@ -298,13 +300,21 @@ p span {
     .title-span {
         font-size: 1.1rem;
         margin: -0.5rem auto 2rem auto;
+    }    /* 统一的响应式数据图样式 - 平板端 */
+    [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
+        width: 95% !important;
+        max-width: 100% !important;
+        height: 500px !important;
+        margin: 2rem auto !important;
+        padding: 1.5rem 1rem !important;
+        border-radius: 0 !important;
     }
     
-    [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
-        height: 400px !important;
+    /* 响应式图片容器 */
+    #delay-little {
+        width: 90% !important;
+        max-width: 100% !important;
         margin: 1.5rem auto !important;
-        padding: 1rem;
-        border-radius: 8px;
     }
 }
 
@@ -348,16 +358,24 @@ p span {
     .title-span {
         font-size: 1rem;
         margin: 0 auto 1.5rem auto;
-    }
-    
+    }    /* 统一的响应式数据图样式 - 手机端 */
     [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
-        height: 320px !important;
-        margin: 1rem auto !important;
-        padding: 0.8rem;
-        border-radius: 6px;
+        width: 98% !important;
+        max-width: 100% !important;
+        height: 400px !important;
+        margin: 1.5rem auto !important;
+        padding: 1rem 0.5rem !important;
+        border-radius: 0 !important;
     }
     
+    /* 手机端图片容器 */
+    #delay-little {
+        width: 95% !important;
+        margin: 1rem auto !important;
+        padding: 0 !important;
+    }
+      /* 特殊调整admitted-num在手机端的高度 */
     #admitted-num {
-        height: 300px !important;
+        height: 380px !important;
     }
 }

@@ -3,7 +3,7 @@ var myChart = echarts.init(document.getElementById('admitted-num'));
 
 // 指定图表的配置项和数据
 var option = {
-  backgroundColor: '#f9f7f7',  title: {
+  backgroundColor: 'transparent',  title: {
     text: '2004-2022年全国博士生招生数量',
     subtext: '数据来源：国家统计局',
     left: 'center',

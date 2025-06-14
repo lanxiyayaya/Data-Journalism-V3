@@ -13,7 +13,7 @@ const delayRatesPercent = delayRates.map(rate => (rate * 100).toFixed(2));
 const data = years.map((year, index) => [year, delayRates[index]]);
 const dateList = years;
 const valueList = delayRates;
-option = {  backgroundColor: '#f9f7f7',  // Make gradient line here
+option = {  backgroundColor: 'transparent',  // Make gradient line here
   visualMap: [
     {
       show: false,
