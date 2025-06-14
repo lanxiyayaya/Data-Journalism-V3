@@ -46,6 +46,8 @@ html, body {
     font-weight: 300;        /* 较细的字体重量 */
     letter-spacing: 0.01em;  /* 字间距 */
     text-align: center;
+    opacity: 0;              /* 初始隐藏标题，避免闪现 */
+    animation: fadeInTitle 0.5s ease-in 1.5s forwards; /* 1.5秒后渐显 */
 }
 
 /* 现代排版样式 */
@@ -394,4 +396,32 @@ p span {
     #admitted-num {
         height: 400px !important;
     }
+}
+
+/* 打字机光标样式 */
+.typewriter-cursor-blink {
+    animation: blink 1s infinite;
+    color: #495057;
+    font-weight: 400;
+}
+
+.typewriter-cursor-static {
+    color: #495057;
+    font-weight: 400;
+}
+
+/* 光标闪烁动画 */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* 标题渐显动画 */
+@keyframes fadeInTitle {
+    to { opacity: 1; }
+}
+
+/* 字符渐显动画 */
+@keyframes fadeInChar {
+    to { opacity: 1; }
 }

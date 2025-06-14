@@ -21,6 +21,7 @@ function addTypewriterEffect() {
     
     const originalText = titleElement.textContent;
     titleElement.innerHTML = ''; // 清空内容
+    titleElement.style.opacity = '1'; // 确保标题容器可见
     
     // 添加闪烁光标
     const cursor = document.createElement('span');
@@ -39,6 +40,8 @@ function addTypewriterEffect() {
                 // 在光标前插入字符
                 const charSpan = document.createElement('span');
                 charSpan.textContent = originalText.charAt(index);
+                charSpan.style.opacity = '0';
+                charSpan.style.animation = 'fadeInChar 0.1s ease-in forwards';
                 titleElement.insertBefore(charSpan, cursor);
                 index++;
             } else {
@@ -46,17 +49,19 @@ function addTypewriterEffect() {
                 clearInterval(typeInterval);
                 cursor.className = 'typewriter-cursor-blink';
             }
-        }, 200); // 每个字符显示间隔200ms
-    }, 2000); // 2秒后开始打字
+        }, 200); // 每个字符显示间隔120ms，更流畅
+    }, 2000); // 1.5秒后开始打字
 }
 
 // 添加页面加载动画
 function addLoadAnimation() {
     const titleSec = document.getElementById('title-sec');
-    titleSec.style.opacity = '0';
+    // 移除可能干扰打字机效果的opacity设置
+    // titleSec.style.opacity = '0';
     
     window.addEventListener('load', function() {
-        titleSec.style.transition = 'opacity 1s ease-in-out';
+        // 确保页面加载完成后标题区域可见
+        titleSec.style.transition = 'opacity 0.5s ease-in-out';
         titleSec.style.opacity = '1';
     });
 }
