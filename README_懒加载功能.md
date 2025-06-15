@@ -80,8 +80,8 @@ class ChartLazyLoader {
             }
         });
     }, {
-        threshold: 0.1,      // 10%进入视口时触发
-        rootMargin: '100px'  // 提前100px开始加载
+        threshold: 0.5,      // 50%进入视口时触发
+        rootMargin: '50px'  // 提前50px开始加载
     });
     
     // 注册图表初始化函数

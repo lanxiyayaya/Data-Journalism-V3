@@ -23,8 +23,8 @@ class ChartLazyLoader {
                 }
             });
         }, {
-            threshold: 0.1, // 当图表10%进入视口时触发
-            rootMargin: '100px' // 提前100px开始加载
+            threshold: 0.5, // 当图表10%进入视口时触发
+            rootMargin: '50px' // 提前100px开始加载
         });
 
         // 等待DOM加载完成后开始观察图表容器
