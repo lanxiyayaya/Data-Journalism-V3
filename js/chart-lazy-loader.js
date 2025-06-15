@@ -21,10 +21,9 @@ class ChartLazyLoader {
                     // 停止观察已加载的图表
                     this.observer.unobserve(entry.target);
                 }
-            });
-        }, {
-            threshold: 0.6, // 当图表10%进入视口时触发
-            rootMargin: '50px' // 提前100px开始加载
+            });        }, {
+            threshold: 1.0, // 当图表100%进入视口时触发
+            rootMargin: '0px' // 不提前加载，等完全可见
         });
 
         // 等待DOM加载完成后开始观察图表容器
@@ -103,9 +102,8 @@ class ChartLazyLoader {
             if (element && !this.charts.has(chartId)) {
                 const rect = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                
-                // 检查元素是否在视口内或接近视口
-                if (rect.top < windowHeight && rect.bottom > -100) {
+                  // 检查元素是否完全在视口内
+                if (rect.top >= 0 && rect.bottom <= windowHeight) {
                     this.loadChart(chartId);
                 }
             }
@@ -123,8 +121,7 @@ class ChartLazyLoader {
             if (element && !this.charts.has(chartId)) {
                 const rect = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                
-                if (rect.top < windowHeight && rect.bottom > 0) {
+                  if (rect.top >= 0 && rect.bottom <= windowHeight) {
                     this.loadChart(chartId);
                 }
             }

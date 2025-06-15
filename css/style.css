@@ -385,11 +385,11 @@ p {
         font-family: "宋体", SimSun, serif;
         font-size: 1rem;
         margin: -0.5rem auto 2rem auto;
-    }/* 统一的响应式数据图样式 - 平板端 */
+    }    /* 统一的响应式数据图样式 - 平板端 */
     [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
         width: 95% !important;
         max-width: 100% !important;
-        height: 450px !important;
+        height: 350px !important;
         margin: 2rem auto !important;
         padding: 1.5rem 1rem !important;
         border-radius: 0 !important;
@@ -443,11 +443,11 @@ p {
         font-family: "宋体", SimSun, serif;
         font-size: 0.95rem;
         margin: 0 auto 1.5rem auto;
-    }/* 统一的响应式数据图样式 - 手机端 */
+    }    /* 统一的响应式数据图样式 - 手机端 */
     [id$="-num"], [id*="delay"], [id*="pressure"], [id*="comments"], [id*="reform"], [id*="marriage"], [id*="wordcloud"] {
         width: 98% !important;
         max-width: 100% !important;
-        height: 400px !important;
+        height: 300px !important;
         margin: 1.5rem auto !important;
         padding: 1rem 0.5rem !important;
         border-radius: 0 !important;
@@ -458,9 +458,11 @@ p {
         width: 95% !important;
         margin: 1rem auto !important;
         padding: 0 !important;
-    }    /* 特殊调整admitted-num在手机端的高度 */
+    }    
+    
+    /* 特殊调整admitted-num在手机端的高度 */
     #admitted-num {
-        height: 400px !important;
+        height: 300px !important;
     }
 }
 
