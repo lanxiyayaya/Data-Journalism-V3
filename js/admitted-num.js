@@ -1,11 +1,13 @@
-// 基于准备好的dom，初始化echarts实例
-var myChart = echarts.init(document.getElementById('admitted-num'), null, {
-    width: 'auto',
-    height: 500
-});
+// 注册图表到懒加载管理器
+function initAdmittedNumChart() {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('admitted-num'), null, {
+        width: 'auto',
+        height: 500
+    });
 
-// 指定图表的配置项和数据
-var option = {
+    // 指定图表的配置项和数据
+    var option = {
   backgroundColor: 'transparent',  title: {
     text: '2004-2022年全国博士生招生数量',
     subtext: '数据来源：国家统计局',
@@ -149,14 +151,23 @@ var option = {
         formatter: '{c}',
         color: '#333'
       }
-    }
-  ]
+    }  ]
 };
 
-// 使用刚指定的配置项和数据显示图表。
-myChart.setOption(option);
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
 
-// 响应式调整
-window.addEventListener('resize', function() {
-  myChart.resize();
-});
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('admitted-num', initAdmittedNumChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('admitted-num', initAdmittedNumChart);
+        }
+    });
+}

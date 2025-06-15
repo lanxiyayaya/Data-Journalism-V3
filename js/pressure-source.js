@@ -1,7 +1,9 @@
-var myChart = echarts.init(document.getElementById('pressure-source'), null, {
-  width: 'auto',
-  height: 500
-});  
+// 注册图表到懒加载管理器
+function initPressureSourceChart() {
+    var myChart = echarts.init(document.getElementById('pressure-source'), null, {
+      width: 'auto',
+      height: 500
+    });
 var option = {
     backgroundColor: 'transparent',
     title: {
@@ -77,8 +79,22 @@ var option = {
                 color: '#3170a7', // 设置柱形颜色
                 borderRadius: [5, 5, 0, 0] // 添加圆角样式：上左、上右、下右、下左
             }
-        }
-    ]
+        }    ]
 };
 
-myChart.setOption(option);
+    myChart.setOption(option);
+
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('pressure-source', initPressureSourceChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('pressure-source', initPressureSourceChart);
+        }
+    });
+}

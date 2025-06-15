@@ -1,21 +1,23 @@
-var chartDom = document.getElementById('total-delay');
-var myChart = echarts.init(chartDom, null, {
-    width: 'auto',
-    height: 500
-});
-var option;
+// 注册图表到懒加载管理器
+function initTotalDelayChart() {
+    var chartDom = document.getElementById('total-delay');
+    var myChart = echarts.init(chartDom, null, {
+        width: 'auto',
+        height: 500
+    });
+    var option;
 
-// 2007-2022年博士生总体延毕率数据
-const years = ["2007年", "2008年", "2009年", "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年", "2017年", "2018年", "2019年", "2020年", "2021年", "2022年"];
-const delayRates = [0.235979456, 0.210444415, 0.200338939, 0.22391208, 0.230953018, 0.228417231, 0.232973663, 0.252273075, 0.298476849, 0.320502249, 0.283150196, 0.253469883, 0.265181788, 0.278920485, 0.354369345, 0.284318634];
+    // 2007-2022年博士生总体延毕率数据
+    const years = ["2007年", "2008年", "2009年", "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年", "2017年", "2018年", "2019年", "2020年", "2021年", "2022年"];
+    const delayRates = [0.235979456, 0.210444415, 0.200338939, 0.22391208, 0.230953018, 0.228417231, 0.232973663, 0.252273075, 0.298476849, 0.320502249, 0.283150196, 0.253469883, 0.265181788, 0.278920485, 0.354369345, 0.284318634];
 
-// 将延毕率转换为百分比格式，便于显示
-const delayRatesPercent = delayRates.map(rate => (rate * 100).toFixed(2));
+    // 将延毕率转换为百分比格式，便于显示
+    const delayRatesPercent = delayRates.map(rate => (rate * 100).toFixed(2));
 
-// 构建数据对
-const data = years.map((year, index) => [year, delayRates[index]]);
-const dateList = years;
-const valueList = delayRates;
+    // 构建数据对
+    const data = years.map((year, index) => [year, delayRates[index]]);
+    const dateList = years;
+    const valueList = delayRates;
 option = {  backgroundColor: 'transparent',  // Make gradient line here
   visualMap: [
     {
@@ -175,13 +177,22 @@ option = {  backgroundColor: 'transparent',  // Make gradient line here
         width: 2,
         color: '#3170a7'
       }
-    }
-  ]
+    }  ]
 };
 
-option && myChart.setOption(option);
+    option && myChart.setOption(option);
 
-// 响应式调整
-window.addEventListener('resize', function() {
-  myChart.resize();
-});
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('total-delay', initTotalDelayChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('total-delay', initTotalDelayChart);
+        }
+    });
+}

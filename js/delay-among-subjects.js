@@ -1,9 +1,11 @@
-var chartDom = document.getElementById('delay-among-subjects');
-var myChart = echarts.init(chartDom, null, {
-  width: 'auto',
-  height: 500
-});
-var option;
+// 注册图表到懒加载管理器
+function initDelayAmongSubjectsChart() {
+    var chartDom = document.getElementById('delay-among-subjects');
+    var myChart = echarts.init(chartDom, null, {
+      width: 'auto',
+      height: 500
+    });
+    var option;
 
 // 2022年各学科博士生延毕率数据
 var subjects = ['哲学', '经济学', '法学', '教育学', '文学', '历史学', '理学', '工学', '农学', '医学','管理学', '艺术学'];
@@ -111,9 +113,23 @@ option = {
         '#a4c2db', '#73b1c9', '#4a9ab0', '#2b7e9c', 
         '#1b5b7e', '#1a3c6b', '#497b9c', '#779fb1',
         '#a7d3d0', '#89c8be', '#2b7e9c', '#73b1c9'
-      ]
-    }
+      ]    }
   ]
 };
 
-option && myChart.setOption(option);
+    option && myChart.setOption(option);
+
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('delay-among-subjects', initDelayAmongSubjectsChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('delay-among-subjects', initDelayAmongSubjectsChart);
+        }
+    });
+}

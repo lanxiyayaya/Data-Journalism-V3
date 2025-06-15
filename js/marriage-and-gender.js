@@ -1,5 +1,7 @@
-// 博士生延毕率数据（按性别和婚育状态）
-const marriageData = [
+// 注册图表到懒加载管理器
+function initMarriageAndGenderChart() {
+    // 博士生延毕率数据（按性别和婚育状态）
+    const marriageData = [
   { name: '男', 婚育状态: '未婚', 延毕率: 0.424 },
   { name: '男', 婚育状态: '已婚未育', 延毕率: 0.437 },
   { name: '男', 婚育状态: '已育', 延毕率: 0.52 },
@@ -82,10 +84,24 @@ marriageChart
     text: (d) => (d.延毕率 * 100).toFixed(1) + '%',
     position: 'inside',
     style: {
-      fontSize: 12,
-      fill: '#333',
+      fontSize: 12,      fill: '#333',
       fontWeight: 'bold'
     }
   });
 
-marriageChart.render();
+    marriageChart.render();
+
+    return marriageChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('marriage-and-gender', initMarriageAndGenderChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('marriage-and-gender', initMarriageAndGenderChart);
+        }
+    });
+}

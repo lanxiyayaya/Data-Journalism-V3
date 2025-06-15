@@ -1,4 +1,6 @@
-var myChart = echarts.init(document.getElementById('reform'), null, {
+// 注册图表到懒加载管理器
+function initReformChart() {
+    var myChart = echarts.init(document.getElementById('reform'), null, {
   width: 'auto',
   height: 500
 });
@@ -131,9 +133,24 @@ var option = {
                 fontSize: 11,
                 color: '#2c3e50',
                 fontWeight: 'bold'
-            }
-        }
+            }        }
     ],
     animation: true // 添加动画效果
 };
-myChart.setOption(option);
+
+    myChart.setOption(option);
+
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('reform', initReformChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('reform', initReformChart);
+        }
+    });
+}

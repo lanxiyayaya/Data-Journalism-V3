@@ -1,4 +1,6 @@
-const bonusChart = new G2.Chart({
+// 注册图表到懒加载管理器
+function initCommentsOnBonusChart() {
+    const bonusChart = new G2.Chart({
   container: 'comments-on-bonus',
   autoFit: true,
 });
@@ -49,11 +51,25 @@ bonusChart
     autoRotate: false,
     rotateToAlignArc: true,
     style: {
-      fill: '#000000'
-    }
+      fill: '#000000'    }
   })
   .axis('x', { title: false })
   .axis('y', false)
   .animate('enter', { type: 'waveIn', duration: 1000 });
 
-bonusChart.render();
+    bonusChart.render();
+
+    return bonusChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('comments-on-bonus', initCommentsOnBonusChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('comments-on-bonus', initCommentsOnBonusChart);
+        }
+    });
+}

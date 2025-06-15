@@ -121,8 +121,8 @@ const colors = [
     '#87cefa', '#b0c4de', '#b0e0e6', '#add8e6'
 ];
 
-// 初始化词云图
-function initWordCloud() {
+// 初始化词云图 - 修改为懒加载版本
+function initWordCloudChart() {
     const chartDom = document.getElementById('wordcloud');
     if (!chartDom) {
         console.error('词云容器未找到');
@@ -286,24 +286,20 @@ function initDefaultWordCloud(myChart) {    const option = {
         animationEasing: 'elasticOut'
     };    myChart.setOption(option);
     
-    window.addEventListener('resize', function() {
-        myChart.resize();
+    window.addEventListener('resize', function() {        myChart.resize();
     });
+
+    return myChart;
 }
 
-// 页面加载完成后初始化词云
-document.addEventListener('DOMContentLoaded', function() {
-    // 确保ECharts已加载
-    if (typeof echarts !== 'undefined') {
-        initWordCloud();
-    } else {
-        console.error('ECharts未加载，请检查脚本引入');
-    }
-});
-
-// 如果页面已经加载完成，直接初始化
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    if (typeof echarts !== 'undefined') {
-        initWordCloud();
-    }
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('wordcloud', initWordCloudChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('wordcloud', initWordCloudChart);
+        }
+    });
 }

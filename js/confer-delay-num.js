@@ -1,9 +1,11 @@
-var chartDom = document.getElementById('confer-delay-num');
-var myChart = echarts.init(chartDom, null, {
-    width: 'auto',
-    height: 500
-});
-var option;
+// 注册图表到懒加载管理器
+function initConferDelayNumChart() {
+    var chartDom = document.getElementById('confer-delay-num');
+    var myChart = echarts.init(chartDom, null, {
+        width: 'auto',
+        height: 500
+    });
+    var option;
 
 option = {
   backgroundColor: 'transparent',  title: {
@@ -174,14 +176,23 @@ option = {
             { offset: 1, color: '#ffa9a9' }
           ])
         }
-      }
-    }
+      }    }
   ]
 };
 
-option && myChart.setOption(option);
+    option && myChart.setOption(option);
 
-// 响应式调整
-window.addEventListener('resize', function() {
-  myChart.resize();
-});
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('confer-delay-num', initConferDelayNumChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('confer-delay-num', initConferDelayNumChart);
+        }
+    });
+}

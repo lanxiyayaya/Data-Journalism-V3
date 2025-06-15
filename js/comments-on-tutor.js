@@ -1,4 +1,6 @@
-var myChart = echarts.init(document.getElementById('comments-on-tutor'), null, {
+// 注册图表到懒加载管理器
+function initCommentsOnTutorChart() {
+    var myChart = echarts.init(document.getElementById('comments-on-tutor'), null, {
   width: 'auto',
   height: 500
 });
@@ -189,9 +191,23 @@ var option = {
                 formatter: function(params) {
                     return params.value[1].toFixed(3);
                 }
-            }
-        }
+            }        }
     ]
 };
 
-myChart.setOption(option);
+    myChart.setOption(option);
+
+    return myChart;
+}
+
+// 注册到懒加载管理器
+if (window.chartLazyLoader) {
+    window.chartLazyLoader.registerChart('comments-on-tutor', initCommentsOnTutorChart);
+} else {
+    // 如果懒加载管理器还没有加载，等待后再注册
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.chartLazyLoader) {
+            window.chartLazyLoader.registerChart('comments-on-tutor', initCommentsOnTutorChart);
+        }
+    });
+}
