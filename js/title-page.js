@@ -44,13 +44,33 @@ function addTypewriterEffect() {
                 charSpan.style.animation = 'fadeInChar 0.1s ease-in forwards';
                 titleElement.insertBefore(charSpan, cursor);
                 index++;
-            } else {
-                // 打字完成，让光标持续闪烁
+            } else {                // 打字完成，让光标持续闪烁
                 clearInterval(typeInterval);
                 cursor.className = 'typewriter-cursor-blink';
+                
+                // 打字完成后延迟显示作者信息
+                setTimeout(() => {
+                    showAuthors();
+                }, 800); // 打字完成后等待800ms再显示作者信息
             }
         }, 200); // 每个字符显示间隔120ms，更流畅
     }, 2000); // 1.5秒后开始打字
+}
+
+// 显示作者信息
+function showAuthors() {
+    const authorsElement = document.getElementById('title-authors');
+    if (!authorsElement) return;
+    
+    // 初始设置为不可见且稍微向下偏移
+    authorsElement.style.opacity = '0';
+    authorsElement.style.transform = 'translateX(-50%) translateY(20px)';
+    
+    // 触发下滑动画
+    setTimeout(() => {
+        authorsElement.style.opacity = '1';
+        authorsElement.style.transform = 'translateX(-50%) translateY(0)';
+    }, 100);
 }
 
 // 添加页面加载动画

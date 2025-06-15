@@ -50,6 +50,32 @@ html, body {
     animation: fadeInTitle 0.5s ease-in 1.5s forwards; /* 1.5秒后渐显 */
 }
 
+/* 标题页作者信息样式 */
+.title-authors {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    font-family: serif;
+    font-size: 1.2rem;
+    color: #6c757d;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.title-authors span {
+    display: inline-block;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
 /* 现代排版样式 */
 h1{
     text-align: center;
@@ -500,4 +526,29 @@ p {
 /* 字符渐显动画 */
 @keyframes fadeInChar {
     to { opacity: 1; }
+}
+
+/* 作者信息响应式样式 */
+@media (max-width: 768px) {
+    .title-authors {
+        font-size: 1rem;
+        bottom: 30%;
+    }
+    
+    .title-authors span {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-authors {
+        font-size: 0.9rem;
+        bottom: 25%;
+        white-space: normal;
+        max-width: 90%;
+    }
+    
+    .title-authors span {
+        padding: 0;
+    }
 }
