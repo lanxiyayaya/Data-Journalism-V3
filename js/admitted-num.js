@@ -47,8 +47,10 @@ function initAdmittedNumChart() {
       xAxisIndex: [0],
       start: 0,
       end: 100,
-      height: 25,      bottom: '5%',
-      borderColor: 'transparent',      backgroundColor: 'rgba(91, 125, 166, 0.1)',
+      height: 25,      
+      bottom: '5%',
+      borderColor: 'transparent',      
+      backgroundColor: 'rgba(91, 125, 166, 0.1)',
       fillerColor: 'rgba(118, 143, 165, 0.25)',
       textStyle: {
         color: '#666'
@@ -132,8 +134,8 @@ function initAdmittedNumChart() {
       barWidth: '50%',      
       data: [53284, 54794, 55955, 58022, 59764, 61911, 63762, 65559, 68370, 70462, 72634, 74416, 77252, 83878, 95502, 105169, 116047, 125823, 138951],      itemStyle: {
         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color:  '#3f72af'},
-          { offset: 1, color: '#355c7d'}
+            { offset: 0, color: '#3f72af' },
+            { offset: 1, color: '#355c7d' }
         ]),
         borderRadius: [5, 5, 0, 0]
       },      
