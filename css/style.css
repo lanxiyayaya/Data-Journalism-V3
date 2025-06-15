@@ -178,25 +178,58 @@ p {
     font-weight: 500;
     color: #ee3f4d;
 }
-/* 现代引用和文献样式 */
-.literature {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.6;
-    margin: 0.8rem 0;
-    padding: 0 1rem;
-    text-align: left;
-    border-left: none;
+/* 作者和文献信息区域 - 重新设计 */
+#authors-and-literature {
+    max-width: 65ch;
+    margin: 4rem auto 3rem auto;
+    padding: 0;
     background: transparent;
-    border-radius: 0;
-    padding: 0.8rem 1rem;
 }
 
-#literature-title {
-    font-weight: 600;
-    color: #333;
-    margin-top: 3rem;
+/* 作者信息样式 */
+.author-info {
+    font-family: serif;
     font-size: 1.1rem;
+    color: #495057;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+/* 文献标题样式 */
+#literature-title {
+    font-family: serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 3rem 0 2rem 0;
+    text-align: left;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+/* 文献条目样式 - 标准学术格式 */
+.literature {
+    display: block;
+    font-family: serif;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0.3rem 0;
+    padding: 0;
+    text-align: justify;
+    text-indent: -2rem;
+    padding-left: 2rem;
+    background: transparent;
+    border: none;
+    max-width: none;
+}
+
+/* 文献编号样式 */
+.literature::before {
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 /* 图片容器现代化 */
@@ -402,6 +435,42 @@ p {
     }    /* 特殊调整admitted-num在手机端的高度 */
     #admitted-num {
         height: 400px !important;
+    }
+}
+
+/* 文献部分响应式样式 */
+@media (max-width: 768px) {
+    #authors-and-literature {
+        margin: 3rem 1rem 2rem 1rem;
+        max-width: none;
+    }
+    
+    .author-info {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    #literature-title {
+        font-size: 1.2rem;
+        margin: 2rem 0 1.5rem 0;
+    }    .literature {
+        font-size: 0.9rem;
+        margin: 0.25rem 0;
+        text-indent: -1.5rem;
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {    .literature {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        text-indent: -1.2rem;
+        padding-left: 1.2rem;
+        margin: 0.2rem 0;
+    }
+    
+    #literature-title {
+        font-size: 1.1rem;
     }
 }
 
