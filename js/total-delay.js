@@ -151,7 +151,7 @@ option = {  backgroundColor: 'transparent',  // Make gradient line here
           color: '#333'
         },
         itemStyle: {
-          color: '#5a8db3',
+          color: '#065279',
           borderColor: '#fff',
           borderWidth: 3,
           shadowBlur: 10,

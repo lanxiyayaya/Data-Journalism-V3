@@ -21,7 +21,7 @@ option = {
       fontSize: 12,
       color: '#7f8c8d'
     },
-    padding: [0, 0, 20, 0]
+    padding: [2, 0, 20, 0]
   },
   tooltip: {
     trigger: 'axis',
@@ -49,13 +49,15 @@ option = {
     textStyle: {
       color: '#333'
     }
-  },  grid: {
+  },  
+  grid: {
     left: '10%',
     right: '10%',
     bottom: '5%',
-    top: '15%',
+    top: '20%',
     containLabel: true
-  },dataZoom: [
+  },
+  dataZoom: [
     {
       type: 'slider',
       show: true,

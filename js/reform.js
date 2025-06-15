@@ -41,7 +41,9 @@ var option = {
     grid: {
         top: '10%',
         bottom: '10%',
-    },      yAxis: [
+        left: '20%'
+    },      
+    yAxis: [
         {
             type: 'category',
             data: ["其他", "提高导师的指导质量", "取消论文发表的要求", "提高待遇", "加强对博士生的课题研究的支持", "减轻科研压力"],
@@ -88,15 +90,17 @@ var option = {
                 value: 0.41,
                 itemStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                        { offset: 0, color: '#e74c3c' },
-                        { offset: 1, color: '#c0392b' }
+                        { offset: 0, color: '#f47983' },
+                        { offset: 0.5, color: '#ff6b7a' },
+                        { offset: 1, color: '#e74c3c' }
                     ])
                 },                
                 emphasis: {
                     itemStyle: {
                         color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                            { offset: 0, color: '#ff6b7a' },
-                            { offset: 1, color: '#e74c3c' }
+                            { offset: 0, color: '#e74c3c' },
+                            { offset: 0.5, color: '#ff6b7a' },
+                            { offset: 1, color: '#f47983' }
                         ]),
                         shadowBlur: 12,
                         shadowOffsetX: 0,
