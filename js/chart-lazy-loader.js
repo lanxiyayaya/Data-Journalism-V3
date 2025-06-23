@@ -21,8 +21,9 @@ class ChartLazyLoader {
                     // 停止观察已加载的图表
                     this.observer.unobserve(entry.target);
                 }
-            });        }, {
-            threshold: 1.0, // 当图表100%进入视口时触发
+            });
+        }, {
+            threshold: 0.6, // 当图表60%进入视口时触发
             rootMargin: '0px' // 不提前加载，等完全可见
         });
 
