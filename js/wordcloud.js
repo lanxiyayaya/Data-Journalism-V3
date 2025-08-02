@@ -220,7 +220,7 @@ function initWordCloudChart() {
     };
     
     // 设置图片路径
-    maskImage.src = '../pic/蝴蝶2.png';
+    maskImage.src = 'pic/蝴蝶2.png';
 }
 
 // 默认词云配置（图片加载失败时使用）
